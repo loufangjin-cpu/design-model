@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
+      // 缓存第一次创建的对象（登陆框）
       // -------不安全-----------------------------
       var _unique = null;
 
@@ -20,9 +21,10 @@
       }
 
       var a = createSingle();
-      //   _unique = null--不安全
+      //   _unique = null--不安全?
+      // _unique 是一个全局变量， 变成一个私有， 不能篡改， 就可以实现安全了
       var b = createSingle();
-
+    
       console.log(a === b); //true
 
       // -------安全--------------------------------
