@@ -28,6 +28,7 @@
           add: function (child) {
             this.children.push(child);
             this.element.appendChild(child.element);
+            // 返回this , 可以实现链式调用
             return this;
           },
         };
@@ -39,11 +40,12 @@
           this.method = method || "get";
           this.action = action || "";
           this.parent = parent;
+          // 初始化表单容器
           this.init();
         }
 
         inheritPrototype(CreateForm, Container);
-
+        // 重写 init 方法
         CreateForm.prototype.init = function () {
           this.element = document.createElement("form");
           this.element.id = this.id;

@@ -61,6 +61,14 @@
             sort: emptyArray.sort,
             splice: emptyArray.splice,
             indexOf: emptyArray.indexOf,
+            a: function(){
+                console.log('a')
+                return this
+            },
+            b:function(){
+              console.log('b')
+              return this
+            }
           };
 
           zepto.Z.prototype = Z.prototype = $.fn;
@@ -74,7 +82,8 @@
       window.onload = function () {
         console.log($ === Zepto2);
         console.log($("#a"));
-        console.log(Zepto2("#a"));
+        // 实现链式调用
+        console.log(Zepto2("#a").a().b());
       };
     </script>
   </head>
