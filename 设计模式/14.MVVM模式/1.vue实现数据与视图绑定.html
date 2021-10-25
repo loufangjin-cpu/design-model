@@ -103,8 +103,11 @@
 
       for (var key in data) {
         (function (key) {
+          console.log('data', data)
+          console.log('data', data.key, data[key])
           var dep = [];
-          var value = data.key;
+          // data.key 和 data[key] 的 表现不一样
+          var value = data[key];
           Object.defineProperty(data, key, {
             get: function () {
               for (var i = 0; i < dep.length; i++) {
