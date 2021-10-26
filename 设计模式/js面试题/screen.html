@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      border: 1px solid red;
+      width: 300px;
+      height: 300px;
+      margin: 10px;
+      padding: 10px;
+    }
+    .wrap {
+      width: 100px;
+      height: 100px;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box">
+      hhhhhh
+    </div>
+  </div>
+  <script>
+    const dom = document.querySelector('.box')
+    const wrap = document.querySelector('.wrap')
+    // https://juejin.cn/post/6844904133921619982
+    //1、以父元素作为参照点（父元素的定位不能是static） 从父元素到自己的margin的距离 （margin 之外的到matgin的距离）
+    console.log('offsetLeft', dom.offsetLeft)
+    console.log('offsetTop', dom.offsetTop)
+
+    // 只读属性，先上公式：offsetHeight || offsetWidth = boder + padding + content（不包括margin）
+    console.log('offsetWidth', dom.offsetWidth)
+    console.log('offsetHeight', dom.offsetHeight)
+
+    //3.clientWidth和clientHeight
+    // 只读属性，返回当前节点的可视宽度和可视高度（包括内边距）=> (不包括margin、border）
+    // clientHeight = padding + content。
+    console.log('clientWidth', dom.clientWidth)
+    console.log('clientHeight', dom.clientHeight)
+    // scrollTop、scrollLeft、scrollWidth、scrollHeight
+    // scrollTop和scrollLeft是可读写属性 ， 网页滚动条垂直方向和水平方向滚去的距离(元素滚出去部分)
+    // crollWidth和scrolltHeight是只读属性，返回当前节点的实际宽度和实际高度（不包括边框
+    // 没有滚动条时和clientWidth和clientHeight一样
+    console.log('scrollTop', dom.scrollTop)
+    console.log('scrollLeft', dom.scrollLeft)
+    console.log('scrollHeight', dom.scrollHeight)
+    console.log('scrollWidth', dom.scrollWidth)
+  // 5.event.clientX、event.clientY、event.pageX、event.pageY 给目标点有关系=》（到元素还是到浏览器可视范围））
+  // event.clientX /event.clientY是目标点距离浏览器可视范围的X轴/Y轴坐标
+  // event.pageX /event.pageY 是目标点距离document最左上角的X轴/Y轴坐标
+  // 6.innerHeight/innerWidth和outerHeight/outerWidth （暂时不急了解 ie不支持）
+
+    let ticking = false;
+
+    function doSomething(scroll_pos) {
+      // 根据滚动位置做的事
+    }
+
+    wrap.addEventListener('scroll', function(e) {
+      last_known_scroll_position = window.scrollY;
+      console.log('e', e)
+      if (!ticking) {
+        window.requestAnimationFrame(function(x) {
+          doSomething(last_known_scroll_position);
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    },true);
+  </script>
+</body>
+</html>
