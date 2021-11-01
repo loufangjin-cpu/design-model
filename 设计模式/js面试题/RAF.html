@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      background: red;
+      height: 100px;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+    <div class="box">RFa</div>
+    <script>
+      let cur = document.querySelector('.box')
+      let curWidth = 100
+      let maxWidth = 1000
+      function animation () {
+        curWidth = curWidth + 1
+        cur.style.width = curWidth + "px"
+        // requestAnimationFrame 浏览器自动控制
+        // if(curWidth < maxWidth) {
+        //   window.requestAnimationFrame(animation)
+        // }
+        // 需要自己控制时间
+        // if(curWidth < maxWidth) {
+        //   setTimeout(animation, 16.7)
+        // }
+      }
+      animation()
+    </script>
+</body>
+</html>
