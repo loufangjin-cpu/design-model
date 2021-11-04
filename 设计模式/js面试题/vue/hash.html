@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="hash">点击修改hash</div>
+
+  <script>
+    // hash变化
+    // js修改url 手动修改url 浏览器的前进和后退
+    // npx http-server -p 8081
+    const domDiv = document.querySelector('.hash')
+    window.onhashchange = (event) => {
+      console.log('old url', event.oldURL)
+      console.log('new url', event.newURL)
+      console.log('hash', location.hash)
+    }
+    // 页面初始加载， 获取hash
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('ready hash:', location.hash)
+    })
+    // js 修改url
+    domDiv.addEventListener('click', () => {
+      location.href = '#/user'
+    })
+  </script>
+</body>
+</html>

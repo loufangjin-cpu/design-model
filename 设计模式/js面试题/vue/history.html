@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="hash">点击修改history</div>
+
+  <script>
+    // hash变化
+    // js修改url 手动修改url 浏览器的前进和后退
+    // npx http-server -p 8081
+    const domDiv = document.querySelector('.hash')
+    // 页面初始加载， 获取hash
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('ready hash:', location.pathname)
+    })
+    // js 修改url
+    domDiv.addEventListener('click', () => {
+      const state = {name: 'page1'}
+      console.log('路由切换page1')
+      history.pushState(state, '', 'page1')
+    })
+    // 监听浏览器的前进和后天
+    window.onpopstate = (event) => {
+      console.log('监听', event.state, location.pathname)
+    }
+  </script>
+</body>
+</html>
